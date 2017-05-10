@@ -21,6 +21,19 @@ RSpec.describe MainController, type: :controller do
     # end
   end
   
+  describe 'GET #about' do
+    it 'response successfully with an HTTP 200 status code' do
+      get :about
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+    it "renders the about template" do
+      get :about
+      expect(response).to render_template("about")
+    end
+  end
+
   describe 'GET #contact_info' do
     it 'response successfully with an HTTP 200 status code' do
       get :contact_info
